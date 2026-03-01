@@ -19,12 +19,5 @@ Where appropriate, the thesis will investigate fine-tuning approaches to adapt s
 This research aims to contribute to a deeper understanding of how practical, resource-efficient agentic AI systems can be constructed, balancing performance with real-world constraints.
 
 #### References:
-
 1. Belcak, P., Heinrich, G., Diao, S., Fu, Y., Dong, X., Muralidharan, S., Lin, Y. C., Molchanov, P. (2025). Small Language Models are the Future of Agentic AI.
-    
 2. Wu, J., Zhu, J., Liu, Y., Xu, M., Jin, Y. (2025). Agentic Reasoning: A Streamlined Framework for Enhancing LLM Reasoning with Agentic Tools. In Proceedings of ACL-LONG, 2025.
-    
-
-  
-  
-**

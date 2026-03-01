@@ -10,7 +10,7 @@ url: https://arxiv.org/abs/2502.04644v2
 tags: []
 ---
 ## Key Findings
-Agentic Reasoning achieves new state-of-the-art (SOTA) results among public models on expert-level problems and deep research tasks, delivering performance comparable to proprietary models like OpenAI Deep Research. The framework boosts overall performance on the GPQA dataset by nearly 10% compared to the base DeepSeek-R1 model. The combination of Web-Search, Code, and Mind-Map agents provides optimal and synergistic performance improvement
+Agentic Reasoning achieves new state-of-the-art (SOTA) results among public models on **expert-level problems and deep research tasks**, delivering performance comparable to proprietary models like OpenAI Deep Research. The framework boosts overall performance on the GPQA dataset by nearly 10% compared to the base DeepSeek-R1 model. The combination of Web-Search, Code, and Mind-Map agents provides optimal and synergistic performance improvement
 
 ## Limitations
 The system faces challenges including significant computational overhead and increased inference latency due to the sequential invocation of multiple external agents. Its reliance on external knowledge sources, particularly web search, makes it susceptible to misinformation or biased content due to the lack of built-in verification mechanisms. Furthermore, the system is vulnerable to hallucinations, a risk associated with its high dependence on LLMs for the overall decision-making process, necessitating better interpretability and trustworthiness.
