@@ -1,6 +1,6 @@
 -------
 
-## Table of Contents
+# Table of Contents
 
 - [Multi-Agent System (MAS) and SLMs](#multi-agent-system-mas-and-slms)
   - [MAS Literature](#mas-literature)
@@ -12,6 +12,7 @@
 ---------
 # Multi-Agent System (MAS) and SLMs
 ## MAS Literature
+---
 
 #### [Small Language Models are the Future of Agentic AI (2506.02153v2)](Master%20Thesis%20Papers/Small%20Language%20Models%20are%20the%20Future%20of%20Agentic%20AI%20(2506.02153v2).pdf)
 Belcak et al. argue that the current reliance on generalist LLMs in agentic architectures represents an economically inefficient misallocation of computational resources.
@@ -26,8 +27,8 @@ Belcak et al. argue that the current reliance on generalist LLMs in agentic arch
 
 #### [Agentic Reasoning A Streamlined Framework for Enhancing LLM Reasoning with Agentic Tools](Master%20Thesis%20Papers/Agentic%20Reasoning%20A%20Streamlined%20Framework%20for%20Enhancing%20LLM%20Reasoning%20with%20Agentic%20Tools%20(2502.04644v2).pdf)
 - Wu et al. propose *Agentic Reasoning*, a framework designed to enhance large language model reasoning by integrating external, tool-using agents.
-- This approach decouples high-level reasoning from execution by allowing the main reasoning LLM to delegate specific sub-tasks to specialized auxiliary agents, which prevents the main model from being disrupted by tasks like writing and executing code.
-- The authors experimentally identify three universally effective agentic tools: a **Web-Search agent, a Coding agent, and a Mind-Map memory agent.**
+- This approach decouples **high-level reasoning from execution by allowing the main reasoning LLM to delegate specific sub-tasks to specialized auxiliary agents, which prevents the main model from being disrupted by tasks like writing and executing code.**
+- The authors experimentally identify three universally effective agentic tools: a <mark style="background: #BBFABBA6;">Web-Search agent, a Coding agent, and a Mind-Map memory agent.</mark>
 - A key contribution relevant to minimal orchestration is their finding on **tool quantity versus quality; ablation studies revealed that adding massive toolboxes (such as LangChain's 109 tools) actually degraded overall performance due to an increased risk of inappropriate tool selection.**
 - The framework introduces the Mind-Map agent, which dynamically constructs a structured knowledge graph to store reasoning context, track logical relationships, and maintain coherence over long, multi-step reasoning chains.
 - Furthermore, the authors demonstrate that wrapping tools in an "agentic" layer (where the tool is managed by an LLM) significantly reduces errors compared to traditional direct API calling, as the agent can self-monitor, express uncertainty, and prevent cascading failures.
@@ -46,10 +47,37 @@ Belcak et al. argue that the current reliance on generalist LLMs in agentic arch
 > 
 
 
+#### [In-the-Flow Agentic System Optimization for Effective Planning and Tool Use (2510.05592v1)](Master%20Thesis%20Papers/In-the-Flow%20Agentic%20System%20Optimization%20for%20Effective%20Planning%20and%20Tool%20Use%20(2510.05592v1).pdf) 
+<mark style="background: #BBFABBA6;">See link:</mark>  https://agentflow.stanford.edu/ 
+Li et al. introduce AGENTFLOW, an agentic framework designed to overcome the limitations of monolithic tool-integrated reasoning models.
+- The authors argue that monolithic models, which train a single policy to interleave reasoning and tool calls under full context, suffer from instability and brittle generalization as task horizons and tool diversity increase.
+- AGENTFLOW decomposes complex work across four specialized modules: an **Action Planner, a Tool Executor, an Execution Verifier, and a Solution Generator.**
+- These modules coordinate iteratively via a shared, evolving memory that creates a deterministic and structured record of the reasoning process, which bounds context growth and enables transparent state tracking.
+- By orchestrating tasks through this modular system, the authors demonstrate that an **agentic framework powered by a 7B-parameter backbone can outperform a ~200B-parameter monolithic model (GPT-4o) across search, mathematical, and agentic domains.**
+
+#### [Multi-Agent Collaboration Mechanisms A Survey of LLMs (2501.06322v1)](Master%20Thesis%20Papers/Multi-Agent%20Collaboration%20Mechanisms%20A%20Survey%20of%20LLMs%20(2501.06322v1).pdf)
+**SURVEY:** Tran et al. introduce a comprehensive framework that characterizes MAS collaboration based on <mark style="background: #BBFABBA6;">key dimensions: actors, types (cooperation, competition, coopetition), structures (centralized, distributed, hierarchical), and strategies (rule-based, role-based, model-based)</mark>.
+- The survey formally defines the **"Centralized Structure" (or star structure), where a central agent acts as a hub to manage, control, and coordinate interactions among all other participating agents.** This directly maps to our proposed Orchestrator architecture.
+- The authors highlight "Role-based Protocols," noting that leveraging distinct predefined roles allows each agent to operate on segmented objectives based on their specific domain knowledge, which supports the overarching system goal.
+- Importantly, **the survey warns that multi-agent systems with suboptimally designed collaboration channels can actually be outperformed by single-agent counterparts with strong prompts.** This underscores that effective orchestration and channel design are critical to MAS success.
+> [!PDF|yellow] [[Multi-Agent Collaboration Mechanisms A Survey of LLMs (2501.06322v1).pdf#page=20&selection=66,0,73,27&color=yellow|Multi-Agent Collaboration Mechanisms A Survey of LLMs (2501.06322v1), p.20]]
+> > The rise of LLM-based multi-agent collaborative systems has been driven by the introduction of LLMs and their effectiveness as central processing brains. Inspired by human collaboration, these systems typically break complex tasks into subtasks, with agents assigned specific roles (e.g., software engineer) to focus on subtasks relevant to their expertise. Collaboration channels are critical in enabling agents to work together, facilitating capabilities such as planning and coordination. These channels are characterized by their actors (agents involved), type (e.g., cooperation, competition, or coopetition), structure (e.g., peer-to-peer, centralized, or distributed), and strategy (e.g., role-based, rule-based, or model-based)
+> 
+> **[NOTE] nice for thesis intro!**
+> > [!PDF|yellow] [[Multi-Agent Collaboration Mechanisms A Survey of LLMs (2501.06322v1).pdf#page=21&selection=33,0,47,15&color=yellow|Multi-Agent Collaboration Mechanisms A Survey of LLMs (2501.06322v1), p.21]]
+> > Effective Collaboration Channels: establishing robust collaboration channels among agents is crucial for seamless collaboration. Clear protocols prevent misunderstandings and ensure efficient information exchange. As shown in AutoGen framework [ 134 ] MASs can outperform single-agent systems with effectively designed collaboration mechanisms. On the other hand, as studied in [128 ] MAS approach with suboptimal design for their competitive collaboration channels can be overtaken by single-agent counterpart with strong prompts.
+
+
+#### [ToolOrchestra Elevating Intelligence via Efficient Model and Tool Orchestration (2511.21689v1)](Master%20Thesis%20Papers/ToolOrchestra%20Elevating%20Intelligence%20via%20Efficient%20Model%20and%20Tool%20Orchestration%20(2511.21689v1).pdf)
+- The authors challenge the monolithic model approach by introducing the "orchestration paradigm," where intelligence emerges from a composite system managed by a central orchestrator. 
+- They demonstrate that simply prompting off-the-shelf LLMs to act as orchestrators is brittle and introduces systemic biases. Specifically, prompted LLMs exhibit a "self-enhancement bias" (e.g., Qwen3-8B disproportionately delegates tasks to GPT-5) or default to the strongest available tool regardless of cost (e.g., GPT-5 almost exclusively calling GPT-5-mini).
+- By explicitly training a dedicated orchestrator using reinforcement learning, the system learns to **dynamically balance performance, cost, and user preferences,** proving that proper orchestration requires dedicated training rather than static heuristics.
+
+
 
 
 ## Small Agents Literature
-
+---
 #### [Small Language Models are the Future of Agentic AI (2506.02153v2)](Master%20Thesis%20Papers/Small%20Language%20Models%20are%20the%20Future%20of%20Agentic%20AI%20(2506.02153v2).pdf)
 This position paper formally contends that SLMs are sufficiently powerful, inherently more operationally suitable, and necessarily more economical for the vast majority of agentic invocations.
 - The authors argue that the majority of subtasks in deployed systems are repetitive, scoped, and non-conversational, which perfectly suits the predictability of SLMs.
@@ -57,9 +85,8 @@ This position paper formally contends that SLMs are sufficiently powerful, inher
 - **SLMs also enforce closer behavioral alignment; they are less prone to hallucinatory format deviations when generating tool calls or interacting directly with code schemas .**
 - In three case studies estimating LLM-to-SLM replacement in popular open-source agents (MetaGPT, Open Operator, Cradle), the authors estimate that 40% to 70% of LLM queries could be reliably replaced by appropriately specialized SLMs.
 
-
-
 #### [Agentic Reasoning A Streamlined Framework for Enhancing LLM Reasoning with Agentic Tools](Master%20Thesis%20Papers/Agentic%20Reasoning%20A%20Streamlined%20Framework%20for%20Enhancing%20LLM%20Reasoning%20with%20Agentic%20Tools%20(2502.04644v2).pdf)
+
 While the primary experiments in this study utilize frontier models like DeepSeek-R1 and DeepSeek-V3, the architectural design strongly supports the principles of Small Language Model (SLM) ensembles. The authors highlight the advantage of **Task-specific model modularity**, which allows different language models to be assigned to different tasks based on their strengths. Specifically, they note that an agentic setup allows for the routing of simpler subtasks—such as summarizing web search results—to lightweight, non-reasoning models. This modularity optimizes resource usage and preserves efficiency by matching the best, potentially smaller, model to each specific subtask rather than relying on a monolithic model for every step.
 
 #### [Multi-agent Architecture Search via Agentic Supernet](Master%20Thesis%20Papers/Multi-agent%20Architecture%20Search%20via%20Agentic%20Supernet%20(2502.04180v2).pdf) 
@@ -67,6 +94,30 @@ While the primary experiments in this study utilize frontier models like DeepSee
 - The authors demonstrate that by dynamically sampling customized systems, MaAS requires only 6% to 45% of the inference costs compared to existing handcrafted or automated multi-agent systems.
 - By proving that complex, token-heavy systems are largely unnecessary for simpler tasks (which can be resolved with single zero-shot I/O), MaAS reinforces the viability of utilizing smaller, specialized configurations to handle varying workloads efficiently
 
+#### [In-the-Flow Agentic System Optimization for Effective Planning and Tool Use (2510.05592v1)](Master%20Thesis%20Papers/In-the-Flow%20Agentic%20System%20Optimization%20for%20Effective%20Planning%20and%20Tool%20Use%20(2510.05592v1).pdf) 
+→ Strong evidence that SLM ensembles can exceed the capabilities of frontier large models when given appropriate roles, coordination mechanisms and fine-tuning
+
+- The entire AGENTFLOW system was instantiated using a 7B-parameter backbone (Qwen2.5-7B-Instruct) for all four of its active modules.
+- Despite its small size, this SLM-based system achieved average accuracy gains of 14.9% on knowledge-intensive search and 14.5% on mathematical reasoning compared to top-performing specialized baselines.
+- The authors conducted an ablation study substituting the 7B planner with a frozen GPT-4o model, finding only modest gains; this indicates that dynamic, in-the-flow co-adaptation of small agents is a more effective strategy than relying on static, large-capacity models.
+
+#### [Multi-Agent Collaboration Mechanisms A Survey of LLMs (2501.06322v1)](Master%20Thesis%20Papers/Multi-Agent%20Collaboration%20Mechanisms%20A%20Survey%20of%20LLMs%20(2501.06322v1).pdf)
+While focusing broadly on LLMs, the survey supports the SLM philosophy by noting that MAS systems distribute tasks among agents, allowing them to retain and **share diverse knowledge bases without overloading a single system.** The authors point out that role-based techniques encourage modularity and increase the reusability of individual modules, enhancing the overall system performance. **This validates the approach of using smaller, specialized experts rather than forcing a large model to handle every subtask.**
+
+<mark style="background: #FFF3A3A6;">Scalability and resource maintenance are identified as open challenges</mark>
+ **→ good to include as motivation in the thesis**
+> [!PDF|yellow] [[Multi-Agent Collaboration Mechanisms A Survey of LLMs (2501.06322v1).pdf#page=28&selection=55,0,62,26&color=yellow|Multi-Agent Collaboration Mechanisms A Survey of LLMs (2501.06322v1), p.28]]
+> > Scalability and Resource Maintainance. Increasing agent population poses a significant challenge in MASs. Managing resources (memory, processing time), coordination and collaboration channels among a growing number of agents introduces additional complexities, such as maintaining efficiency in agent interactions and preventing bottlenecks. Understanding the scaling laws of the behavior and performance of MASs is critical for designing architectures capable of handling large-scale collaboration.
+
+
+#### [ToolOrchestra Elevating Intelligence via Efficient Model and Tool Orchestration (2511.21689v1)](Master%20Thesis%20Papers/ToolOrchestra%20Elevating%20Intelligence%20via%20Efficient%20Model%20and%20Tool%20Orchestration%20(2511.21689v1).pdf)
+- The paper strongly reinforces the viability of SLMs, hypothesizing that small language models are entirely sufficient to serve as the "brain" if they are taught to coordinate more intelligent tools strategically.
+> [!PDF|yellow] [[ToolOrchestra Elevating Intelligence via Efficient Model and Tool Orchestration (2511.21689v1).pdf#page=2&selection=305,43,308,25&color=yellow|ToolOrchestra Elevating Intelligence via Efficient Model and Tool Orchestration (2511.21689v1), p.2]]
+> > ToolOrchestra (shown in Figure 2), a novel method for training a small language model to act as the orchestrator – the “brain” of a heterogeneous tool-use agent
+> 
+> **So, on the one hand this paper suggests the “brain” can be small and on the other hand, other papers (SLMs are the future…) suggest that once the task can be decomposed into smaller subtasks, using specialized SLMs → better (TBC)**
+- The authors produced Orchestrator-8B, an 8B-parameter model that achieved higher accuracy at a lower cost than previous monolithic tool-use agents.
+- Instead of excessively invoking strong, expensive models for every step, Orchestrator-8B learns to make balanced, strategic tool calls, avoiding the biases shown by large foundation models.
 
 
 
@@ -89,11 +140,22 @@ The authors specifically note that in the GAIA benchmark, no single static syste
 
 By adaptively sampling customized agentic systems based on the specific domain of the GAIA task, MaAS achieved substantial improvements over baselines, securing an 18.38% improvement on Level 1 tasks and a 17.61% improvement on Level 2 tasks.
 
+#### [In-the-Flow Agentic System Optimization for Effective Planning and Tool Use (2510.05592v1)](Master%20Thesis%20Papers/In-the-Flow%20Agentic%20System%20Optimization%20for%20Effective%20Planning%20and%20Tool%20Use%20(2510.05592v1).pdf)
+The researchers evaluated AGENTFLOW across ten benchmarks spanning **knowledge-intensive search (HotpotQA, 2Wiki, Musique, Bamboogle), agentic reasoning (GAIA), mathematical reasoning (AIME24, AMC23, GameOf24), and scientific reasoning (GPQA, MedQA)**
+![[Pasted image 20260302122303.png]]
+
+#### [Multi-Agent Collaboration Mechanisms A Survey of LLMs (2501.06322v1)](Master%20Thesis%20Papers/Multi-Agent%20Collaboration%20Mechanisms%20A%20Survey%20of%20LLMs%20(2501.06322v1).pdf)
+The survey observes that current benchmarks for LLM-based multi-agent collaborative systems primarily focus on metrics such as success rate, task outcomes, cost-effectiveness, and collaborative efficiency - the authors emphasize **the need for fine-grained evaluation at both the individual agent and the collaboration levels to enable root cause analysis, offering insights into individual behaviors and overall system dynamics. → good to add as thesis motivation**
+
+#### [ToolOrchestra Elevating Intelligence via Efficient Model and Tool Orchestration (2511.21689v1)](Master%20Thesis%20Papers/ToolOrchestra%20Elevating%20Intelligence%20via%20Efficient%20Model%20and%20Tool%20Orchestration%20(2511.21689v1).pdf)
+The paper evaluates multi-agent orchestration on highly complex reasoning benchmarks: **Humanity's Last Exam (HLE), FRAMES, and $\tau^2$-Bench.** Because verifiable multi-turn tool-use data is scarce, the authors **developed an automatic data synthesis pipeline to create a  dataset called ToolScale.** ToolScale simulates rich user-agent-tool environments across 10 domains, generating diverse tasks with corresponding ground truth solutions to enable end-to-end RL training.
+> [!PDF|yellow] [[ToolOrchestra Elevating Intelligence via Efficient Model and Tool Orchestration (2511.21689v1).pdf#page=15&selection=23,0,60,76&color=yellow|ToolOrchestra Elevating Intelligence via Efficient Model and Tool Orchestration (2511.21689v1), p.15]]
+> > B. Evaluation Benchmarks ∙ **Humanity’s Last Exam (HLE)** [ 1]. A large-scale benchmark comprising PhD-level questions across mathematics, humanities, natural sciences and more. It evaluates the model capabilities to perform iterative search and intensive reasoning. Questions are multiple-choice or short-answer, with 10–14% requiring images. We use the text-only subset, designed to be unambiguous and not solvable by simple web search. ∙ **FRAMES** [13 ]. A dataset for end-to-end evaluation of retrieval-augmented generation (RAG), covering factuality, retrieval accuracy, and reasoning. It contains 824 multi-hop questions requiring 2–15 Wikipedia articles, spanning numerical, tabular, temporal, and multi-constraint reasoning. ∙ **𝜏 2-Bench** [12]. A benchmark to evaluate model capabilities to use tools and solve problems in conversations with users. It includes tasks in three domains: telecom, retail and airline.
+
 
 
 
 -----
-
 # Fine-tuning
 
 #### [Small Language Models are the Future of Agentic AI (2506.02153v2)](Master%20Thesis%20Papers/Small%20Language%20Models%20are%20the%20Future%20of%20Agentic%20AI%20(2506.02153v2).pdf)
@@ -111,17 +173,51 @@ Belcak et al. identify agentic interactions as natural pathways for gathering hi
 -  **Cross-Model Transferability of the Tuned Architecture:** The probabilistic routing distribution, once fine-tuned via this cost-constrained optimization, does not overfit to a single model. The authors showed that a supernet optimized using a specific LLM (like GPT-4o-mini) successfully transferred to other backbones (like Qwen-2.5-72b and Llama-3.1-70b), yielding performance improvements of approximately 5%, proving that the optimized orchestration strategy generalizes beyond its specific training environment.
 - The optimization of the agentic supernet demonstrates **strong inductive capabilities, meaning the fine-tuned controller can generalize to operators it was never explicitly trained on.** For instance, when the researchers held out the "Debate" operator during training and introduced it only at inference, the tuned system was still able to reasonably activate and utilize it at appropriate proportions.
 
+#### [In-the-Flow Agentic System Optimization for Effective Planning and Tool Use (2510.05592v1)](Master%20Thesis%20Papers/In-the-Flow%20Agentic%20System%20Optimization%20for%20Effective%20Planning%20and%20Tool%20Use%20(2510.05592v1).pdf)
+The challenge of long-horizon credit assignment in agentic systems is tackled by by introducing Flow-based Group Refined Policy Optimization (Flow-GRPO).
+- Unlike traditional offline Supervised Fine-Tuning (SFT), which is decoupled from live system dynamics, Flow-GRPO optimizes the planner on-policy inside the multi-turn loop. **The authors demonstrate that offline SFT actually leads to a catastrophic performance collapse** (a 19.0% accuracy drop), as token-level imitation fails to teach the planner how to adapt to dynamic tool feedback or recover from compounding errors.
+- Flow-GRPO solves the sparse-reward problem by broadcasting a single, verifiable final-outcome reward to the entire trajectory, aligning every local planner decision with global success.This in-the-flow reinforcement learning significantly reduces tool-calling error rates and teaches the planner to autonomously discover effective solution pathways and adapt its tool preferences based on the domain.
+- During the reinforcement learning fine-tuning phase, <mark style="background: #BBFABBA6;">the planner is trained using a mixture of paired question-answer examples from the Search-R1 and DeepMath datasets to cover both knowledge-intensive search and mathematical domains.</mark> This fine-tuning process proves highly effective and adaptable, offering consistent performance gains across tasks as the backbone LLM scales in size, such as from 3B to 7B parameters
 
-
-
-
+#### [ToolOrchestra Elevating Intelligence via Efficient Model and Tool Orchestration (2511.21689v1)](Master%20Thesis%20Papers/ToolOrchestra%20Elevating%20Intelligence%20via%20Efficient%20Model%20and%20Tool%20Orchestration%20(2511.21689v1).pdf)
+- The Orchestrator is fine-tuned using **Group Relative Policy Optimization (GRPO),** moving beyond standard supervised fine-tuning. **The RL reward design is multi-objective, calculating rewards based on three factors: the correctness of the final outcome, efficiency (penalizing the monetary cost and wall-clock latency of the trajectory), and adherence to user tool preferences.**
+- To stabilize this complex agentic RL training, the authors applied specific techniques during backward propagation, such as homogeneity filtering (ignoring batches with low reward variance) and format consistency filtering.
 
 
 -----
 # Thesis Relevance
 
 #### [Small Language Models are the Future of Agentic AI (2506.02153v2)](Master%20Thesis%20Papers/Small%20Language%20Models%20are%20the%20Future%20of%20Agentic%20AI%20(2506.02153v2).pdf)
-- The authors explicitly argue that SLMs are sufficiently powerful, inherently more suitable, and necessarily more economical for agentic systems compared to LLMs. They argue that the dominance of LLMs in agent design is a misallocation of resources, which directly supports your motivation.
-- **Decomposition and Narrow Scope:** The paper highlights that agentic applications expose only a very narrow subset of language model capabilities. Because complex goals are decomposed into modular sub-tasks, generalist LLMs are often overkill. This supports your system design where communication is restricted to the orchestrator and specialized sub-agents.
+- The authors explicitly argue that SLMs are sufficiently powerful, inherently more suitable, and necessarily more economical for agentic systems compared to LLMs. They argue that the dominance of LLMs in agent design is a misallocation of resources.
+- **Decomposition and Narrow Scope:** The paper highlights that agentic applications expose only a very narrow subset of language model capabilities. Because complex goals are decomposed into modular sub-tasks, generalist LLMs are often overkill. This supports the system design where communication is restricted to the orchestrator and specialized sub-agents.
 - Efficiency and Scaling: The paper provides a strong foundation for your efficiency research questions, noting that SLMs are 10-30x cheaper in latency, energy consumption, and FLOPs.
-- The authors outline an LLM-to-SLM conversion algorithm, emphasizing that organic data gathered from agentic interactions can be used to fine-tune SLMs overnight. This perfectly frames your planned exploration of role-specific fine-tuning.
+- The authors outline an LLM-to-SLM conversion algorithm, emphasizing that organic data gathered from agentic interactions can be used to fine-tune SLMs overnight - role-specific fine-tuning.
+
+
+#### [In-the-Flow Agentic System Optimization for Effective Planning and Tool Use (2510.05592v1)](Master%20Thesis%20Papers/In-the-Flow%20Agentic%20System%20Optimization%20for%20Effective%20Planning%20and%20Tool%20Use%20(2510.05592v1).pdf)
+
+- Proof of "Small Beats Large": The authors instantiate their entire four-module system **(Planner, Executor, Verifier, Generator) using a 7B parameter model (Qwen2.5-7B). They prove that this SLM ensemble significantly outperforms the ~200B parameter GPT-4o across multiple domains**.
+- **Pitfalls of Monolithic Models:** They explicitly argue that training a single, monolithic policy to interleave reasoning and tool calls scales poorly as horizons lengthen and tool diversity grows.
+> [!PDF|yellow] [[In-the-Flow Agentic System Optimization for Effective Planning and Tool Use (2510.05592v1).pdf#page=10&selection=323,28,329,97&color=yellow|In-the-Flow Agentic System Optimization for Effective Planning and Tool Use (2510.05592v1), p.10]]
+> > However, this monolithic approach scales poorly as task complexity and planning horizons grow. The central challenge is long-horizon credit assignment; attributing a final outcome to specific intermediate tool calls remains difficult, even with fine-grained, turnlevel rewards (Zeng et al., 2025a; Wang et al., 2025d). This difficulty leads to training instability and brittle inference-time generalization, manifesting as strategic deficiencies like tool overuse or “cognitive offloading” (Wang et al., 2025b; Qian et al., 2025b), suboptimal personalization (Cheng et al., 2025), and poor alignment with user preferences for tool invocation (Huang et al., 2025).
+> 
+- **RL Fine-Tuning Approach (Flow-GRPO):** This paper introduces an in-the-flow reinforcement learning technique that **trains the planner on-policy during live tool interactions, rather than relying on offline supervised fine-tuning** (which they prove actually degrades performance)
+- They utilize an evolving memory to pass information between **distinct agent roles,** which prevents context window bloat and keeps the system transparent.
+
+
+#### [Multi-Agent Collaboration Mechanisms A Survey of LLMs (2501.06322v1)](Master%20Thesis%20Papers/Multi-Agent%20Collaboration%20Mechanisms%20A%20Survey%20of%20LLMs%20(2501.06322v1).pdf)
+- Architectural Taxonomy: This paper gives the exact academic terminology to describe the system. Our single-orchestrator, isolated-sub-agent design is officially a **Centralized Structure (Orchestrator as the hub) utilizing a Role-based Strategy (specialized sub-agents) with a Cooperative collaboration type.**
+- The survey explicitly highlights that a single agent's failure (like a hallucination) can spread and be reinforced by other agents, leading to cascading effects. **This provides a strong theoretical motivation for the plan to investigate the robustness and failure modes of multi-agent systems compared to monolithic models.**
+- **The "Orchestrator vs. Sub-agent" Dynamic:** The survey notes that centralized serving agents have the heavy objective of managing and controlling interactions. This perfectly aligns with our empirical finding that system performance is driven primarily by orchestrator capacity rather than sub-agent capacity.
+- **NOTE**: implement a continuous external memory (a shared "mind map" for all sub-agents)
+  → directly addresses the survey's point that interactions enable agents to "connect, negotiate, make decisions, plan, and act jointly". Implementing an Actor-Evaluator feedback loop within your orchestrator setup could also be a good architectural addition to test.
+
+
+#### [ToolOrchestra Elevating Intelligence via Efficient Model and Tool Orchestration (2511.21689v1)](Master%20Thesis%20Papers/ToolOrchestra%20Elevating%20Intelligence%20via%20Efficient%20Model%20and%20Tool%20Orchestration%20(2511.21689v1).pdf)
+- **Efficiency and scaling laws:** This research provides strong validation for the thesis's core hypothesis regarding resource constraints. It quantitatively demonstrates that a specialized 8B parameter orchestration model can consistently surpass a monolithic giant (e.g., GPT-5) on complex multi-step reasoning benchmarks (e.g. $\tau^2$-Bench and FRAMES), achieving superior accuracy while consuming only about 30% of the cost.
+- **Failure modes of monolithic models:** The study directly addresses the thesis objective of comparing the robustness of multi-agent systems to large single models. It reveals a critical failure mode: <mark style="background: #FFF3A3A6;">when standard monolithic LLMs are tasked with orchestration via simple prompting, they exhibit brittle decision-making, fail to optimize for efficiency, and suffer from "self-enhancement bias" (disproportionately invoking their own variants or blindly defaulting to the most expensive tools).</mark>
+- The authors' use of multi-objective reinforcement learning aligns with the thesis's planned investigation into agent fine-tuning approaches. By incorporating efficiency-aware rewards (penalizing high cost and latency), the paper proves that targeted adaptation can actively train an SLM to be a vastly superior and more deliberate resource manager than a generalist LLM **→ ad. post training and targeted adaptation**
+
+
+# Example RQs
+---

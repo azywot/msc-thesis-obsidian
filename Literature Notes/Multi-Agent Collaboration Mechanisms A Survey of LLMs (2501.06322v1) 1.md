@@ -21,6 +21,8 @@ tags: []
 > 
 > **[NOTE] What if we had one sub agent continuously writing to the external memory and then other subagents would have the access to this memory? Like a mind map but for all the subagents**
 
+
+
 > [!PDF|yellow] [[Multi-Agent Collaboration Mechanisms A Survey of LLMs (2501.06322v1).pdf#page=4&selection=116,30,121,38&color=yellow|Multi-Agent Collaboration Mechanisms A Survey of LLMs (2501.06322v1), p.4]]
 > > This work aims to provide a comprehensive view of the collaborative foundations between LLM-based agents in multi-agent collaborative systems. With collaboration as the main focus, our study characterizes collaborations between agents based on their actors (agents involved), type (e.g., cooperation, competition, or coopetition), structure (e.g., peer-to-peer, centralized, or distributed), and strategy (e.g., role-based, rule-based, or model-based), and the coordination layer in collaborations. 
 > 
@@ -98,13 +100,6 @@ tags: []
 > > DyLAN. This setup facilitates dynamic interactions, incorporating features like inference-time agent selection and an early-stopping mechanism, which collectively enhance the efficiency of cooperation among agents. [74 ] have conceptualized assemblies of agents as a group and focused on exploring the potential of their cooperation [ 18, 41, 105 , 132 ] found social behaviors autonomously emerge within a group of agents
 > 
 > **emerging social behaviours - insightful**
-
-> [!PDF|yellow] [[Multi-Agent Collaboration Mechanisms A Survey of LLMs (2501.06322v1).pdf#page=20&selection=66,0,73,27&color=yellow|Multi-Agent Collaboration Mechanisms A Survey of LLMs (2501.06322v1), p.20]]
-> > The rise of LLM-based multi-agent collaborative systems has been driven by the introduction of LLMs and their effectiveness as central processing brains. Inspired by human collaboration, these systems typically break complex tasks into subtasks, with agents assigned specific roles (e.g., software engineer) to focus on subtasks relevant to their expertise. Collaboration channels are critical in enabling agents to work together, facilitating capabilities such as planning and coordination. These channels are characterized by their actors (agents involved), type (e.g., cooperation, competition, or coopetition), structure (e.g., peer-to-peer, centralized, or distributed), and strategy (e.g., role-based, rule-based, or model-based)
-> 
-> **[NOTE] nice for thesis intro!**
-> > [!PDF|yellow] [[Multi-Agent Collaboration Mechanisms A Survey of LLMs (2501.06322v1).pdf#page=21&selection=33,0,47,15&color=yellow|Multi-Agent Collaboration Mechanisms A Survey of LLMs (2501.06322v1), p.21]]
-> > Effective Collaboration Channels: establishing robust collaboration channels among agents is crucial for seamless collaboration. Clear protocols prevent misunderstandings and ensure efficient information exchange. As shown in AutoGen framework [ 134 ] MASs can outperform single-agent systems with effectively designed collaboration mechanisms. On the other hand, as studied in [128 ] MAS approach with suboptimal design for their competitive collaboration channels can be overtaken by single-agent counterpart with strong prompts.
 
 
 > [!PDF|red] [[Multi-Agent Collaboration Mechanisms A Survey of LLMs (2501.06322v1).pdf#page=28&selection=64,0,70,67&color=red|Multi-Agent Collaboration Mechanisms A Survey of LLMs (2501.06322v1), p.28]]
