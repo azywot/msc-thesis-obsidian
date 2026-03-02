@@ -8,6 +8,7 @@
 - [Datasets](#datasets)
 - [Fine-tuning](#fine-tuning)
 - [Thesis relevance](#thesis-relevance)
+-  [Example RQs](#example-rqs)
 
 ---------
 # Multi-Agent System (MAS) and SLMs
@@ -219,5 +220,36 @@ The challenge of long-horizon credit assignment in agentic systems is tackled by
 - The authors' use of multi-objective reinforcement learning aligns with the thesis's planned investigation into agent fine-tuning approaches. By incorporating efficiency-aware rewards (penalizing high cost and latency), the paper proves that targeted adaptation can actively train an SLM to be a vastly superior and more deliberate resource manager than a generalist LLM **→ ad. post training and targeted adaptation**
 
 
-# Example RQs
+#### [Distilling LLM Agent into Small Models with Retrieval and Code Tools (2505.17612v2)](Master%20Thesis%20Papers/Distilling%20LLM%20Agent%20into%20Small%20Models%20with%20Retrieval%20and%20Code%20Tools%20(2505.17612v2).pdf)
+
+
+
+
 ---
+# 🛠️ Example RQs (TBC, WIP)
+---
+### Main Research Question (MRQ)
+
+**Can a centralized multi-agent system composed of Small Language Models (SLMs) match or exceed the performance of monolithic Large Language Models (LLMs) on complex reasoning and tool-use tasks while maintaining strict resource efficiency?**
+
+_Logical Flow:_ This overarching question drives the entire thesis. To answer it, you must first define the architecture and test its performance (SQ1), measure its cost-effectiveness (SQ2), analyze where it breaks down (SQ3), and finally explore how to improve it through targeted adaptation (SQ4).
+
+---
+
+### Sub-Questions (SQs) and Literature Connections
+
+**SQ1: Architecture and Performance** _How does a centralized, role-based orchestration architecture utilizing specialized SLM sub-agents compare to monolithic LLMs in solving multi-step, tool-intensive reasoning tasks?_
+
+- **Connection to Literature:** This directly tests the "orchestration paradigm" proposed in _ToolOrchestra_ (Su et al., 2025) and the _AGENTFLOW_ framework (Li et al., 2025), both of which argue that decoupling planning from execution yields superior reasoning. The terminology for the system design (Centralized Structure, Role-based Protocols) is grounded in the _Survey of LLMs_ (Tran et al., 2025), while the hypothesis that SLMs are sufficient for these scoped execution roles is supported by _Small Language Models are the Future of Agentic AI_ (Belcak et al., 2025).
+
+**SQ2: Efficiency and Scaling Trade-offs** _What are the specific trade-offs between system performance and computational efficiency (measured by inference cost, latency, and memory usage) when distributing tasks across an SLM ensemble versus a single monolithic model?_
+
+- **Connection to Literature:** _Small Language Models are the Future of Agentic AI_ establishes that SLMs are mathematically 10-30x cheaper to serve than LLMs. _ToolOrchestra_ provides the empirical methodology for this question, demonstrating how to measure the "cost vs. performance" frontier and proving that an 8B model can achieve frontier-level accuracy at 30% of the cost. _MaAS_ (Zhang et al., 2025) also connects here by proving that complex, token-heavy systems are largely unnecessary for simpler tasks.    
+
+**SQ3: Robustness and Failure Modes** _What are the distinct failure modes of orchestrator-led SLM ensembles compared to monolithic LLMs, particularly concerning error propagation, tool-selection biases, and hallucination cascading?_
+
+- **Connection to Literature:** _ToolOrchestra_ provides the foundational motivation for this question by identifying that monolithic LLMs fail at orchestration due to "self-enhancement bias" (e.g., GPT-5 defaulting to GPT-5-mini regardless of task needs). Conversely, the _Survey of LLMs_ (Tran et al., 2025) highlights the specific risk factor of multi-agent systems: a single agent's failure can spread and be reinforced by other agents (cascading hallucinations). _AGENTFLOW_ further notes that monolithic models suffer from brittle generalization as task horizons lengthen.
+
+**SQ4: Targeted Adaptation and Fine-Tuning** _How does targeted adaptation—specifically multi-objective, in-the-flow reinforcement learning applied to the SLM orchestrator—impact the system's ability to optimize tool usage, adapt to resource constraints, and improve overall collaborative performance?_
+
+- **Connection to Literature:** _ToolOrchestra_ demonstrates that an orchestrator must be explicitly trained (using techniques like Group Relative Policy Optimization) with efficiency-aware rewards to function correctly, rather than relying on static prompting. _AGENTFLOW_ proves that offline Supervised Fine-Tuning (SFT) actually collapses multi-agent performance, necessitating "in-the-flow" RL to solve long-horizon credit assignment. _Small Language Models are the Future of Agentic AI_ supports the feasibility of this by noting that SLM fine-tuning can be done overnight on consumer hardware.
