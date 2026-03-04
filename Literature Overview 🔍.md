@@ -1,5 +1,9 @@
 -------
 
+# NOTES:
+- In-the-Flow AS: Why do we have all components (Planner/Executor/Verifier) and not 2 for example? What is their unique role in this?
+- DSR1 - in the latest tech report they claim with tools & thinking model performs better (MAS)
+
 # Table of Contents
 
 - [Multi-Agent System (MAS) and SLMs](#multi-agent-system-mas-and-slms)
@@ -121,6 +125,12 @@ While focusing broadly on LLMs, the survey supports the SLM philosophy by noting
 - Instead of excessively invoking strong, expensive models for every step, Orchestrator-8B learns to make balanced, strategic tool calls, avoiding the biases shown by large foundation models.
 
 
+#### [Distilling LLM Agent into Small Models with Retrieval and Code Tools (2505.17612v2)](Master%20Thesis%20Papers/Distilling%20LLM%20Agent%20into%20Small%20Models%20with%20Retrieval%20and%20Code%20Tools%20(2505.17612v2).pdf)
+Kang et al. introduce Agent Distillation, a framework designed to transfer not just reasoning capabilities, but full task-solving behaviors from large LLM agents to SLMs.
+- The authors argue that traditional Chain-of-Thought (CoT) distillation often fails in small models because it relies on the model to internalize rare factual knowledge or perform precise computations, leading to hallucinations.
+- Instead of static reasoning, Agent Distillation teaches the SLM to navigate "reason-act-observe" trajectories. This approach enables the SLM to actively use external tools- specifically retrieval and code execution-to solve problems adaptively.
+- The results strongly validate the efficacy of small models: SLMs with as few as 0.5B, 1.5B, and 3B parameters achieved performance competitive with next-tier larger models (1.5B, 3B, 7B) that were fine-tuned using standard CoT distillation.
+
 
 -----
 # Datasets 
@@ -153,6 +163,12 @@ The paper evaluates multi-agent orchestration on highly complex reasoning benchm
 > [!PDF|yellow] [[ToolOrchestra Elevating Intelligence via Efficient Model and Tool Orchestration (2511.21689v1).pdf#page=15&selection=23,0,60,76&color=yellow|ToolOrchestra Elevating Intelligence via Efficient Model and Tool Orchestration (2511.21689v1), p.15]]
 > > B. Evaluation Benchmarks ∙ **Humanity’s Last Exam (HLE)** [ 1]. A large-scale benchmark comprising PhD-level questions across mathematics, humanities, natural sciences and more. It evaluates the model capabilities to perform iterative search and intensive reasoning. Questions are multiple-choice or short-answer, with 10–14% requiring images. We use the text-only subset, designed to be unambiguous and not solvable by simple web search. ∙ **FRAMES** [13 ]. A dataset for end-to-end evaluation of retrieval-augmented generation (RAG), covering factuality, retrieval accuracy, and reasoning. It contains 824 multi-hop questions requiring 2–15 Wikipedia articles, spanning numerical, tabular, temporal, and multi-constraint reasoning. ∙ **𝜏 2-Bench** [12]. A benchmark to evaluate model capabilities to use tools and solve problems in conversations with users. It includes tasks in three domains: telecom, retail and airline.
 
+#### [Distilling LLM Agent into Small Models with Retrieval and Code Tools (2505.17612v2)](Master%20Thesis%20Papers/Distilling%20LLM%20Agent%20into%20Small%20Models%20with%20Retrieval%20and%20Code%20Tools%20(2505.17612v2).pdf)
+The authors evaluated their framework across a broad spectrum of benchmarks, specifically factual and mathematical domains. <mark style="background: #BBFABBA6;">For factual reasoning (requiring the retrieval tool), they utilized HotpotQA, Bamboogle, MuSiQue, and 2WikiMultiHopQA. For mathematical reasoning (requiring the code execution tool), they evaluated on MATH, GSM-Hard, AIME, and OlymMath.</mark> **To train the distilled agents, they used a subset of 1,000 HotpotQA examples and 2,000 MATH examples to generate the teacher trajectories.**
+> [!PDF|yellow] [[Distilling LLM Agent into Small Models with Retrieval and Code Tools (2505.17612v2).pdf#page=1&selection=148,10,181,85&color=yellow|Distilling LLM Agent into Small Models with Retrieval and Code Tools (2505.17612v2), p.1]]
+> > Performance comparison of different sizes of Qwen2.5-Instruct models [ 1] on the average accuracy of four factual reasoning tasks (HotpotQA [2], Bamboogle [3], MuSiQue [4 ], 2WikiMultiHopQA [5 ]) and four mathematical reasoning tasks (MATH [ 6 ], GSM-Hard [ 7], AIME [ 8], OlymMATH [ 9]). Distillation is done using the 32B model as the teacher and models ranging from 0.5B to 7B as student
+
+
 
 
 
@@ -183,6 +199,12 @@ The challenge of long-horizon credit assignment in agentic systems is tackled by
 #### [ToolOrchestra Elevating Intelligence via Efficient Model and Tool Orchestration (2511.21689v1)](Master%20Thesis%20Papers/ToolOrchestra%20Elevating%20Intelligence%20via%20Efficient%20Model%20and%20Tool%20Orchestration%20(2511.21689v1).pdf)
 - The Orchestrator is fine-tuned using **Group Relative Policy Optimization (GRPO),** moving beyond standard supervised fine-tuning. **The RL reward design is multi-objective, calculating rewards based on three factors: the correctness of the final outcome, efficiency (penalizing the monetary cost and wall-clock latency of the trajectory), and adherence to user tool preferences.**
 - To stabilize this complex agentic RL training, the authors applied specific techniques during backward propagation, such as homogeneity filtering (ignoring batches with low reward variance) and format consistency filtering.
+
+#### [Distilling LLM Agent into Small Models with Retrieval and Code Tools (2505.17612v2)](Master%20Thesis%20Papers/Distilling%20LLM%20Agent%20into%20Small%20Models%20with%20Retrieval%20and%20Code%20Tools%20(2505.17612v2).pdf)
+The paper outlines highly specific fine-tuning and inference techniques necessary to make small agents reliable tool-users, rather than just text generators.
+- Parameter-Efficient Tuning: The student models were fine-tuned using **LoRA on all linear layers**, demonstrating that full fine-tuning is not strictly necessary to impart complex agentic behaviors.
+- **First-Thought Prefix (FTP):** To generate high-quality training data, the authors found that simply prompting a teacher LLM to act as an agent sometimes degraded its reasoning. They solved this by prefixing the teacher's trajectory with the first step of a standard CoT prompt, which forced the teacher into a correct reasoning path before it generated actions for the student to learn from.
+- **Self-Consistent Action Generation (SAG):** To address the fragility of SLMs at inference time, the authors implemented SAG to improve test-time robustness. <mark style="background: #BBFABBA6;">Because small models often produce misformatted code or invalid actions, SAG samples multiple action sequences and uses a lightweight interpreter to filter out execution errors.</mark> The system then performs majority voting on the resulting valid observations to select the most consistent outcome, reducing code execution and parsing errors.
 
 
 -----
@@ -221,6 +243,12 @@ The challenge of long-horizon credit assignment in agentic systems is tackled by
 
 
 #### [Distilling LLM Agent into Small Models with Retrieval and Code Tools (2505.17612v2)](Master%20Thesis%20Papers/Distilling%20LLM%20Agent%20into%20Small%20Models%20with%20Retrieval%20and%20Code%20Tools%20(2505.17612v2).pdf)
+The paper introduces Agent Distillation, shifting the focus from distilling static Chain-of-Thought (CoT) reasoning to distilling interactive **"reason-act-observe" trajectories.** This teaches small language models (sLMs) how to actively use tools instead of trying to force them to memorize facts or perform complex math internally.
+- The "How-To" for Small Agents: To make small models reliable, the authors introduce two key mechanisms: **First-Thought Prefix (FTP)** to guarantee the teacher model provides high-quality training data. **Self-Consistent Action Generation (SAG)** to prevent small models from crashing the system with bad code or tool calls at test time.
+- Central orchestrator delegates to specialized sub-agents → this paper proves that those sub-agents can be extremely small (0.5B to 3B parameters) and still perform at the level of much larger models if they are trained via Agent Distillation. **It also provides a direct solution to the "failure modes" aspect by using SAG to filter out bad tool calls before they propagate back to your orchestrator.**
+- **Tool-Augmented Sub-Agents:** exploring how augmenting agents with external tools (web search, code environments) influences performance. It proves that delegating knowledge retrieval and mathematical computation to tools allows small agents to circumvent their inherent parameter limitations.
+- **Failure Modes and Robustness:** A core objective of the thesis is identifying the failure modes of MAS. <mark style="background: #BBFABBA6;">This paper highlights a massive failure mode for small agents: generating invalid, misformatted, or unexecutable tool calls.</mark> The introduction of SAG provides a direct architectural solution for the thesis to consider when building robust execution pipelines.
+- **Efficiency and Scaling Laws:** The paper directly addresses the efficiency trade-offs of agentic systems. A key finding is that distilled small agents do not necessarily generate significantly more tokens than CoT models. While they use more tokens for factual retrieval, they actually generate fewer tokens for math reasoning by writing concise code loops to handle repetitive calculations, optimizing the overall latency and compute.
 
 
 

@@ -67,6 +67,8 @@ tags: []
 > 
 > training details
 
+
+
 > [!PDF|red] [[Distilling LLM Agent into Small Models with Retrieval and Code Tools (2505.17612v2).pdf#page=9&selection=178,0,211,95&color=red|Distilling LLM Agent into Small Models with Retrieval and Code Tools (2505.17612v2), p.9]]
 > > Self-consistency improves CoT, but the agent with SAG still performs better. Self-consistent action generation (sag) enhances small agents by filtering out invalid code actions and retaining only those that are consistent with observations. Similarly, self-consistency [ 70 ] can be applied at test time in Chain-of-Thought (CoT) reasoning to improve performance without relying on an external verifier. A natural question is whether CoT with self-consistency, using the same computational budget, can outperform an agent with sag. To investigate this, we conduct experiments using self-consistency [ 70 ] on CoT-distilled small language models (sLMs), applying majority voting over multiple samples. As shown in Figure 5, in the MATH benchmark—where CoT already surpasses the agent with sag— self-consistency further improves the performance of the CoT-distilled model. However, in the more challenging AIME benchmark, the small agent with sag still outperforms the CoT-distilled model under the same generation budget. Moreover, in factual reasoning tasks such as HotpotQA and MuSiQue, self-consistency yields only marginal gains, suggesting limited effectiveness in these settings
 > 
