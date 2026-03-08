@@ -206,6 +206,32 @@ The dataset contains: 20K tasks; 15K associated files; diverse modalities includ
 <mark style="background: #FFF3A3A6;">The authors evaluate their trained agents on the GTA and GAIA benchmarks, which assess multi-modal reasoning, tool usage, and long-horizon task solving. </mark>
 
 
+#### [Self-Hinting Language Models Enhance Reinforcement Learning (2602.03143v1)](Master%20Thesis%20Papers/Self-Hinting%20Language%20Models%20Enhance%20Reinforcement%20Learning%20(2602.03143v1).pdf)
+
+The paper utilizes several datasets for training and evaluation, primarily focused on mathematical reasoning.
+
+The training data is drawn from the **OpenR1-Math-220k** collection. Specifically, it incorporates:
+- **NuminaMath 1.5:** Used as the source for training prompts.
+- **DeepSeek-R1:** Used to provide the initial reasoning traces for these prompts.
+
+From an initial set of 94k prompts, the researchers used the **Math-Verify tool** to filter for correctly verified reasoning traces, resulting in 64k prompts. For the final RL training, they further subsampled this to **15k prompts** to manage computational resources and ensure compatibility with various baselines.
+
+**Evaluation Benchmarks:** The researchers evaluated the models on six mathematical benchmarks and two non-mathematical benchmarks for generalization:
+
+**Mathematical Benchmarks:**
+- **AIME24** and **AIME25**
+- **AMC23**
+- **MATH-500**.
+- **Minerva Math**.
+- **OlympiadBench**.
+
+**Out-of-Distribution/Generalization Benchmarks:**
+- **GPQA-diamond** 
+- **MMLU-Pro**
+
+
+
+
 -----
 # Fine-tuning
 
@@ -250,7 +276,7 @@ The authors use LoRA-based parameter-efficient fine-tuning, freezing the vision 
 This training approach improves: tool selection accuracy, reasoning coherence, executable code generation. **These results suggest that trajectory-level training data is crucial for developing reliable tool-using agents, which aligns with broader trends in agent training research**
 
 
-#### [Self-Hinting Language Models Enhance Reinforcement Learning (2602.03143v1)
+#### [Self-Hinting Language Models Enhance Reinforcement Learning (2602.03143v1)](Master%20Thesis%20Papers/Self-Hinting%20Language%20Models%20Enhance%20Reinforcement%20Learning%20(2602.03143v1).pdf)
 The training procedure builds on **Group Relative Policy Optimization (GRPO)**, a reinforcement learning algorithm commonly used for language model alignment. <mark style="background: #FFF3A3A6;">The key issue addressed in the paper is advantage collapse. When all generated responses in a batch receive the same reward (e.g., all zero), the policy gradient becomes zero and learning stalls.</mark>
 
 The proposed **SAGE framework** modifies the training pipeline as follows:
