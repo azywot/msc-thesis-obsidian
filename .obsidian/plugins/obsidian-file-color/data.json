@@ -1,0 +1,31 @@
+{
+  "cascadeColors": false,
+  "colorBackground": false,
+  "palette": [
+    {
+      "id": "42fEc3IUm4DfC27SE2AcF",
+      "name": "blue",
+      "value": "#0461f6"
+    },
+    {
+      "id": "LbSeSQZBrUl5Fp-amSQ4c",
+      "name": "green",
+      "value": "#3bf906"
+    },
+    {
+      "id": "bOb8xl1WNEyUGUewZztxp",
+      "name": "light blue",
+      "value": "#5ad8f2"
+    }
+  ],
+  "fileColors": [
+    {
+      "path": "Thesis Description.md",
+      "color": "42fEc3IUm4DfC27SE2AcF"
+    },
+    {
+      "path": "Literature Overview 🔍.md",
+      "color": "42fEc3IUm4DfC27SE2AcF"
+    }
+  ]
+}
