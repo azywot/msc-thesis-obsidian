@@ -1,4 +1,7 @@
 -----
+### [16/03] NOTES:
+- Add recommendations (research and practical wise)
+
 ### NOTES:
 - In-the-Flow AS: Why do we have all components (Planner/Executor/Verifier) and not 2 for example? What is their unique role in this?
 - DSR1 - in the latest tech report they claim with tools & thinking model performs better (MAS)
@@ -8,10 +11,7 @@
 ### TODO:
 - <mark style="background: #BBFABBA6;">add the whole conversation context, with</mark> the roles, such that the output is nice → **DONE**
 - <mark style="background: #BBFABBA6;">use F1 for context overlap</mark> → **DONE**
-- add the QA dataset 
-- wrap up the literature overview - read all the remaining papers and put them in the context of the thesis → thesis proposal v1
+- <mark style="background: #BBFABBA6;">add the QA dataset </mark>
+- <mark style="background: #BBFABBA6;">wrap up the literature overview - read all the remaining papers and put them in the context of the thesis → thesis proposal v1</mark>
 
 - **play around with context manager - for now it’s the biggest source of latency**
-
-- I need to solve why the differences in the datasets performance occur - the new repo should match the old repo behavior! 
-	- go through the repo once again

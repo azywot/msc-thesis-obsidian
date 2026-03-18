@@ -1,4 +1,10 @@
--------
+> [!PDF|] [[In-the-Flow Agentic System Optimization for Effective Planning and Tool Use (2510.05592v1).pdf#page=7&selection=359,0,360,1|In-the-Flow Agentic System Optimization for Effective Planning and Tool Use (2510.05592v1), p.7]]
+> > 19.2
+> 
+> > [!PDF|] [[In-the-Flow Agentic System Optimization for Effective Planning and Tool Use (2510.05592v1).pdf#page=3&selection=13,0,13,8|In-the-Flow Agentic System Optimization for Effective Planning and Tool Use (2510.05592v1), p.3]]
+> > Executor
+> 
+> -------
 
 # Table of Contents
 
@@ -7,7 +13,10 @@
   - [Small Agents Literature](#small-agents-literature)
 - [Datasets](#datasets)
 - [Fine-tuning](#fine-tuning)
-- [Thesis relevance](#thesis-relevance)
+- [Thesis > [!PDF|] [[In-the-Flow Agentic System Optimization for Effective Planning and Tool Use (2510.05592v1).pdf#page=3&selection=8,0,9,1|In-the-Flow Agentic System Optimization for Effective Planning and Tool Use (2510.05592v1), p.3]]
+> > Planner 
+> 
+> 
 -  [Example RQs](#example-rqs)
 
 ---------
