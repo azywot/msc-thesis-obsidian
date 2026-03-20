@@ -33,3 +33,26 @@ pdf: "[[Gaia2 Benchmarking LLM Agents on Dynamic and Asynchronous Environments (
 url: https://arxiv.org/abs/2602.11964v1
 tags: []
 ---
+> [!PDF|yellow] [[Gaia2 Benchmarking LLM Agents on Dynamic and Asynchronous Environments (2602.11964v1).pdf#page=2&selection=29,0,36,1&color=yellow|Gaia2 Benchmarking LLM Agents on Dynamic and Asynchronous Environments (2602.11964v1), p.2]]
+> > Gaia2 consists of 1,120 human-annotated scenarios set in a smartphone-like environment with realistic apps (email, messaging, calendar, contacts, etc.), similar to AppWorld and ToolSandbox (Trivedi et al., 2024; Lu et al., 2024). Each scenario requires capabilities beyond search and execution, including adaptability to new events, robustness to noise, resolution of ambiguity, temporal awareness, and collaboration with other agents.
+> 
+> **NOTE: is it then relevant/feasible within the thesis scope?**
+
+> [!PDF|yellow] [[Gaia2 Benchmarking LLM Agents on Dynamic and Asynchronous Environments (2602.11964v1).pdf#page=4&selection=29,0,34,95&color=yellow|Gaia2 Benchmarking LLM Agents on Dynamic and Asynchronous Environments (2602.11964v1), p.4]]
+> > Asynchronicity and time Because environments run asynchronously, model generations directly consume simulated time: if an agent takes longer to respond, the environment clock still advances, and external events may happen during its reasoning process. This design unlocks evaluations of temporal awareness and responsiveness, which are impossible to capture in synchronous settings.
+> 
+> **Tricky with our setup that has locks over the same LLM**
+
+> [!PDF|yellow] [[Gaia2 Benchmarking LLM Agents on Dynamic and Asynchronous Environments (2602.11964v1).pdf#page=4&selection=53,0,55,1&color=yellow|Gaia2 Benchmarking LLM Agents on Dynamic and Asynchronous Environments (2602.11964v1), p.4]]
+> > Universes contain between 400K and 800K tokens of structured and unstructured content (excluding filesystem contents), making them suited for long-context and long-horizon tasks. 
+> 
+> **>> context window for SLMs**
+
+> [!PDF|red] [[Gaia2 Benchmarking LLM Agents on Dynamic and Asynchronous Environments (2602.11964v1).pdf#page=4&selection=107,0,118,76&color=red|Gaia2 Benchmarking LLM Agents on Dynamic and Asynchronous Environments (2602.11964v1), p.4]]
+> > Building on the abstractions of ARE, we introduce Gaia2, consisting of 800 unique verifiable scenarios, carefully annotated by humans across 10 distinct universes in the Mobile environment, with 101 tools each. 
+> 
+> !!!
+
+> [!PDF|yellow] [[Gaia2 Benchmarking LLM Agents on Dynamic and Asynchronous Environments (2602.11964v1).pdf#page=5&selection=116,0,129,3&color=yellow|Gaia2 Benchmarking LLM Agents on Dynamic and Asynchronous Environments (2602.11964v1), p.5]]
+> > Gaia2 evaluates agents across 1,120 scenarios. To provide a clear taxonomy, we distinguish between Core Capabilities (Execution, Search, Ambiguity, Adaptability, Time) and Augmentations (Noise, A2A). 
+

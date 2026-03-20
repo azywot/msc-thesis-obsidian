@@ -383,6 +383,7 @@ This paper shows that **structured intermediate guidance (hints)** can improve r
 > 
  
 - <mark style="background: #BBFABBA6;">They used https://github.com/verl-project/verl for training and vLLM for sampling → consider verl!</mark>
+- 
 - **consider SAGE-Light for less computational overhead**
 
 
