@@ -14,4 +14,4 @@
 - <mark style="background: #BBFABBA6;">add the QA dataset </mark>
 - <mark style="background: #BBFABBA6;">wrap up the literature overview - read all the remaining papers and put them in the context of the thesis → thesis proposal v1</mark>
 
-- **play around with context manager - for now it’s the biggest source of latency**
+- **play around with context manager - for now it’s the biggest source of latency** → DONE (AF-aligned, TBD: mind_map - keep/delete?)
